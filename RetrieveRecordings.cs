@@ -34,6 +34,7 @@ namespace Recordings
         
             IDocumentQuery<Document> query = client.CreateDocumentQuery<Document>(readingCollectionUri, options)
                                                 .Where(reading => reading.month == month)
+                                                .OrderBy(reading => reading.timestamp)
                                                 .AsDocumentQuery();
         
             var readingsForMonth = new List<Document>();
